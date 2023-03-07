@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import Search from "../component/Search"
+import Results from "../component/Results"
 
 
 export default function HomePage() {
@@ -34,6 +35,7 @@ export default function HomePage() {
 	return <>
 		<main>
 			<Search handleInput={handleInput} search={search} />
+			<Results results={state.results} />
 		</main>
 	</>
 }
