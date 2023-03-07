@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-// import axios from 'axios'
+import axios from 'axios'
 import Search from "../component/Search"
 
 
@@ -11,30 +11,29 @@ export default function HomePage() {
 	});
 	const apiUrl = 'http://www.omdbapi.com/?apikey=31157fe';
 
-	// const search = (evt) => {
-	// 	if (evt.key === "Enter") {
-	// 		axios(apiUrl + "&s=" + state.s).then(({ data }) => {
-	// 			let results = data.Search;
-	// 			setState(prevState => {
-	// 				return { ...prevState, results: results }
-	// 			})
-	// 		});
-	// 	}
-	// }
+	const search = (evt) => {
+		if (evt.key === "Enter") {
+			axios(apiUrl + "&s=" + state.s).then(({ data }) => {
+				console.log(data);
+				let results = data.Search;
+				setState(prevState => {
+					return { ...prevState, results: results }
+				})
+			});
+		}
 
+	}
 	const handleInput = (evt) => {
 		let s = evt.target.value;
 
 		setState(prevState => {
 			return { ...prevState, s: s }
 		});
-		console.log(state.s)
 	};
 
-	return (
+	return <>
 		<main>
-			<Search handleInput={handleInput} />
+			<Search handleInput={handleInput} search={search} />
 		</main>
-
-	)
+	</>
 }
