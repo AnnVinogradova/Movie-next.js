@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import Search from "../component/Search"
 import Results from "../component/Results"
-
+import Movieup from "../component/Movieup"
 
 export default function HomePage() {
 	const [state, setState] = useState({
@@ -30,12 +30,30 @@ export default function HomePage() {
 		setState(prevState => {
 			return { ...prevState, s: s }
 		});
-	};
+	}
+
+	const openMovieup = id => {
+		axios(apiUrl + "&i=" + id).then(({ data }) => {
+			let result = data;
+
+			
+			setState(prevState => {
+				return { ...prevState, selected: result }
+			});
+		});
+	}
+
+	const closeMovieup = () => {
+		setState(prevState => {
+			return { ...prevState, selected: {} }
+		});
+	}
 
 	return <>
 		<main>
 			<Search handleInput={handleInput} search={search} />
-			<Results results={state.results} />
+			<Results results={state.results} openMovieup={openMovieup} />
+			{(typeof state.selected.Title != "undefined") ? <Movieup selected={state.selected} closeMovieup={closeMovieup} /> : false}
 		</main>
 	</>
 }
