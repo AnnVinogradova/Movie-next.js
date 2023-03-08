@@ -11,7 +11,7 @@ export default function Movieup({ selected, closeMovieup }) {
 				<p className='rating'>Rating:{selected.imdbRating}</p>
 				<div className='plot'>
 					<img src={selected.Poster}></img>
-					<p>{selected.Actors}</p>
+					<p>Actors: {selected.Actors}</p>
 					<p>{selected.Plot}</p>
 				</div>
 				<button className='close' onClick={closeMovieup}>Закрыть</button>
