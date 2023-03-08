@@ -10,7 +10,7 @@ export default function HomePage() {
 		results: [],
 		selected: {}
 	});
-	const apiUrl = 'http://www.omdbapi.com/?apikey=31157fe';
+	const apiUrl = 'https://www.omdbapi.com/?apikey=31157fe';
 
 	const search = (evt) => {
 		if (evt.key === "Enter") {
@@ -36,7 +36,7 @@ export default function HomePage() {
 		axios(apiUrl + "&i=" + id).then(({ data }) => {
 			let result = data;
 
-			
+
 			setState(prevState => {
 				return { ...prevState, selected: result }
 			});
