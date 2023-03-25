@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 import Search from "../component/Search"
 import Results from "../component/Results"
