@@ -1,6 +1,4 @@
 
-import React from 'react'
-
 export default function Movieup({ selected, closeMovieup }) {
 	return <>
 		<section className='movieup'>
